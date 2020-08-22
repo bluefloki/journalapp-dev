@@ -1,0 +1,63 @@
+/* Variables */
+:root {
+  --primary-color: #ea5455;
+  --primary-color-dark: #cf4b4c;
+  --secondary-color: #4299e1;
+  --secondary-color-darker: #3182ce;
+  --backround-primary: #212121;
+  --backround-secondary: #383838;
+  --transition-speed: 500ms;
+}
+
+body {
+  overflow: overlay;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #212121;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.link-text {
+  display: none;
+  margin-left: 1rem;
+}
+
+.navbar {
+  transition: width 200ms ease;
+}
+
+.navbar:hover {
+  width: 16rem;
+}
+
+.navbar:hover .link-text {
+  display: block;
+}
+.nav-link {
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-speed);
+}
+
+.nav-link i {
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+.nav-link:hover {
+  filter: grayscale(0) opacity(1);
+  background: var(--backround-primary);
+  color: var(--primary-color);
+}

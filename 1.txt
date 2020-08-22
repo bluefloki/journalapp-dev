@@ -1,0 +1,6 @@
+<i className="fas fa-book text-green-400"></i>
+ObjectId("507f1f77bcf86cd799439011")
+
+put the date into the state and then send it and find it from the db
+
+I also need to encrypt the data entries. I know people will want this encryption. I know. What if something is hacked?? fuck
