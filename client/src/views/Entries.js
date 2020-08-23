@@ -17,12 +17,13 @@ const Entries = () => {
   //CREATE ENTRY
   const AddJournalEntry = async () => {
     const title = prompt("Please enter the title:");
-    console.log(title);
+    const content = '[{"type":"paragraph","children":[{"text":""}]}]';
     if (title !== "") {
       const res = await axios.post(
         "/entries",
         {
           title,
+          content,
         },
         {
           headers: {
@@ -31,7 +32,7 @@ const Entries = () => {
         }
       );
       localStorage.setItem("title", title);
-      localStorage.setItem("content", res.data.content);
+      localStorage.setItem("content", content);
       setEntryId((id) => res.data._id);
       setRedirect(true);
     }

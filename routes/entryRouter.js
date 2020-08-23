@@ -9,8 +9,13 @@ router.all("*", checkAuthenticated);
 //create entry
 router.post("/", async (req, res) => {
   try {
+    let { content, title } = req.body;
+    content = CryptoJS.AES.encrypt(content, req.user.encryptionKey).toString();
+    title = CryptoJS.AES.encrypt(title, req.user.encryptionKey).toString();
+    console.log(req.body);
     const newEntry = await Entry.create({
-      ...req.body,
+      title,
+      content,
       userId: req.user.id,
     });
     res.json(newEntry);

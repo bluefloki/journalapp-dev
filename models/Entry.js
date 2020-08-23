@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { schema } = require("./User");
 
 const EntrySchema = mongoose.Schema({
   title: {
@@ -9,7 +8,6 @@ const EntrySchema = mongoose.Schema({
   content: {
     type: String,
     required: true,
-    default: '[{"type":"paragraph","children":[{"text":""}]}]',
   },
   words: {
     type: Number,
