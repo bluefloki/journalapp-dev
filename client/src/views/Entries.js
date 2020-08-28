@@ -16,9 +16,9 @@ const Entries = () => {
 
   //CREATE ENTRY
   const AddJournalEntry = async () => {
-    const title = prompt("Please enter the title:");
+    const title = prompt("Please enter the title:", "");
     const content = '[{"type":"paragraph","children":[{"text":""}]}]';
-    if (title !== "") {
+    if (title !== null && title !== "") {
       const res = await axios.post(
         "/entries",
         {
