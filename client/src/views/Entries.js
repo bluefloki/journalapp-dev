@@ -33,7 +33,7 @@ const Entries = () => {
       );
       localStorage.setItem("title", title);
       localStorage.setItem("content", content);
-      setEntryId((id) => res.data._id);
+      setEntryId((id) => res.data.id);
       setRedirect(true);
     }
   };
@@ -50,13 +50,10 @@ const Entries = () => {
       </button>
       {entries.map((entry) => {
         return (
-          <div
-            className="grid grid-cols-12 items-center gap-10"
-            key={entry._id}
-          >
+          <div className="grid grid-cols-12 items-center gap-10" key={entry.id}>
             <Link
               className="grid grid-cols-12 items-center my-4 bg-dark-400 hover:text-primary-dark px-4 py-2 transition-all ease-in-out duration-300 rounded-sm content-center col-span-11"
-              to={`journal/${entry._id}`}
+              to={`journal/${entry.id}`}
               onClick={() => {
                 localStorage.setItem("title", entry.title);
                 localStorage.setItem("content", entry.content);
@@ -71,7 +68,7 @@ const Entries = () => {
               </div>
             </Link>
             <button
-              onClick={() => removeEntry(entry._id)}
+              onClick={() => removeEntry(entry.id)}
               className="focus:outline-none"
             >
               <i className="far fa-times-circle text-lg m-0 text-red-600"></i>

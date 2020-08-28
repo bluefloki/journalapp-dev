@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-const User = require("../models/User");
+const User = require("../database/models").User;
 const jwt = require("jsonwebtoken");
 
 //Create User
@@ -67,10 +67,10 @@ router.patch("/:id", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ where: { email } });
     if (await bcrypt.compare(password, user.password)) {
       const accessToken = jwt.sign(
-        { id: user._id, encryptionKey: user.encryptionKey },
+        { id: user.id, encryptionKey: user.encryptionKey },
         process.env.JSON_SECRET_KEY
       );
       res.status(201).json({ accessToken });

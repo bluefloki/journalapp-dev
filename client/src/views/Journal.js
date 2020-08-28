@@ -16,7 +16,7 @@ function Journal(props) {
   //SAVE ENTRY
   const saveEntry = async () => {
     try {
-      if (title !== " ") {
+      if (title !== " " && title !== null) {
         await axios.patch(
           `/entries/${props.match.params.id}`,
           {
@@ -26,6 +26,7 @@ function Journal(props) {
           },
           { headers: { Authorization: `Bearer ${localStorage.accessToken}` } }
         );
+        console.log(localStorage.getItem("content"));
         alert("Entry Saved");
       }
     } catch (error) {
